@@ -5,14 +5,15 @@ internal class Match
   public Team Winner { get; set; }
   public Team Loser { get; set; }
 
-  public Match(Team winner, Team loser)
+  internal Match(Team winner, Team loser)
   {
     Winner = winner;
     Loser = loser;
   }
 
-  public void ShowResults()
+  public string GetResults()
   {
-    Console.WriteLine($"\n{Winner.Name}\t{Winner.Score}:{Loser.Score}\t{Loser.Name}\n");
+    string results = $"\n{Winner.Name} won in match against {Loser.Name}. Result: {Winner.Score}:{Loser.Score}\n";
+    return results;
   }
 }

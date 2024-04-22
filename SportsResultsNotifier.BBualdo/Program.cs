@@ -1,16 +1,6 @@
-﻿using SportsResultsNotifier.BBualdo.Models;
+﻿using SportsResultsNotifier.BBualdo;
 using SportsResultsNotifier.BBualdo.Services;
 
-MatchScraperService matchScraperService = new MatchScraperService();
+AppEngine app = new(new MatchScraperService(), new EmailService());
 
-List<Match> matches = matchScraperService.GetMatches("https://www.basketball-reference.com/boxscores/");
-
-if (matches.Count == 0)
-{
-  Console.WriteLine("There is no matches today. Come back later.");
-}
-
-foreach (Match match in matches)
-{
-  match.ShowResults();
-}
+await app.SendEmail();
