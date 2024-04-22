@@ -12,15 +12,14 @@ internal class EmailService : IEmailService
 
     SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
     {
-      UseDefaultCredentials = true,
       EnableSsl = true,
       Credentials = new NetworkCredential(email, password)
     };
 
     return client.SendMailAsync(
-      new MailMessage(from: email,
-                      to: receiverMail,
-                      subject,
-                      message));
+    new MailMessage(from: email,
+                    to: receiverMail,
+                    subject,
+                    message));
   }
 }
